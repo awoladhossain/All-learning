@@ -27,7 +27,7 @@ ACID is the set of properties that guarantee reliable processing of database tra
 - Durability ("It Stays Saved") – Once a transaction is committed, the changes are permanent—even if the system crashes.
   Example: After transferring money, the new balances remain stored safely in the database
 
-```
+```bash
 -- Start the transaction
 BEGIN TRANSACTION;
 
@@ -82,7 +82,7 @@ Normalization in SQL is the process of organizing tables to reduce redundancy an
 - Don’t use repeating groups of columns. Example: phone1, phone2, phone3 columns in the same table.
 - Don’t keep non-atomic (non-divisible) data. Example: storing full address in one column like "House 12, Road 5, Dhaka" instead of splitting into street, city, etc.
 
-```
+```bash
 -- Bad design: multiple values in one column
 CREATE TABLE Customers (
     customer_id INT PRIMARY KEY,
@@ -97,7 +97,7 @@ CREATE TABLE Customers (
 - Each row should be unique.
 - Break repeating groups into separate rows or tables.
 
-```
+```bash
 -- Good design: atomic values, no repeating groups
 CREATE TABLE Customers (
     customer_id INT PRIMARY KEY,
@@ -134,7 +134,7 @@ CREATE TABLE CustomerPhones (
 
 Example: A table tracking which student takes which course:
 
-```
+```bash
 
 -- Bad design: partial dependency
 CREATE TABLE StudentCourses (
@@ -156,7 +156,7 @@ CREATE TABLE StudentCourses (
 - Separate data into different tables so that every non-key column depends on the whole primary key.
 - Create one table for courses, and another for the student-course relationship.
 
-```
+```bash
 -- Courses table (course_id → course_name)
 CREATE TABLE Courses (
     course_id INT PRIMARY KEY,
@@ -186,7 +186,7 @@ CREATE TABLE StudentCourses (
 - This is called a transitive dependency.
 - Example: storing city based on zip_code inside the Students table.
 
-```
+```bash
 -- Bad design: transitive dependency
 CREATE TABLE Students (
     student_id INT PRIMARY KEY,
@@ -207,7 +207,7 @@ CREATE TABLE Students (
 - Separate attributes that depend on other non-key attributes into their own table.
 - Keep only direct dependencies on the primary key.
 
-```
+```bash
 -- ZipCodes table (zip_code → city)
 CREATE TABLE ZipCodes (
     zip_code VARCHAR(10) PRIMARY KEY,
@@ -239,7 +239,7 @@ CREATE TABLE Students (
 - Table StudentPassports: passport_id, student_id
 - Each student has one passport, and each passport belongs to one student.
 
-```
+```bash
 CREATE TABLE Students (
     student_id INT PRIMARY KEY,
     name VARCHAR(50)
@@ -262,7 +262,7 @@ CREATE TABLE StudentPassports (
 - Table Courses: course_id, teacher_id
 - One teacher can teach many courses, but each course has one teacher.
 
-```
+```bash
 CREATE TABLE Teachers (
     teacher_id INT PRIMARY KEY,
     name VARCHAR(50)
@@ -287,7 +287,7 @@ CREATE TABLE Courses (
 - If you try to store this directly, you’ll end up with duplicate or messy data.
 - The junction table solves this by holding pairs of IDs.
 
-```
+```bash
 -- Students table
 CREATE TABLE Students (
     student_id INT PRIMARY KEY,
@@ -326,7 +326,7 @@ CREATE TABLE StudentCourses (
   > Table Employees: employee_id, name, manager_id
 - An employee can be managed by another employee in the same table.
 
-```
+```bash
 CREATE TABLE Employees (
     employee_id INT PRIMARY KEY,
     name VARCHAR(50),
