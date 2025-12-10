@@ -1,67 +1,87 @@
-# 📚 Learning Resources Repository
+# 📚 All Learning – Open Source Learning Resources Repository
 
-Welcome to my **Open-Source Learning Resources Repository**!  
-This repo is a curated collection of everything I’m learning and practicing — from **Computer Science fundamentals** to **AI/ML**, **Operating Systems**, **System Design**, and various **Programming Frameworks**.  
+Welcome to **All Learning** 🚀  
+A comprehensive, community-driven **open-source repository** that contains everything I’m learning, practicing, and sharing across **Computer Science**, **System Design**, **AI/ML**, and **Modern Development Frameworks**.
 
-The goal is simple:  
-- 🚀 Help myself and others prepare for **interviews**  
-- 📖 Support **continuous learning**  
-- 🤝 Share knowledge with the **developer community**
+This repository is built with one goal in mind:
+
+> 💡 **Make learning structured, practical, and useful for real-world development and technical interviews.**
+
+---
+
+## 🎯 Goals of This Repository
+
+- ✅ Help **students & developers** crack **technical interviews**
+- ✅ Create a **one-stop learning hub** for CS + System Design + AI/ML
+- ✅ Share **clear explanations**, **code examples**, and **mental models**
+- ✅ Encourage **open-source collaboration**
+- ✅ Document my personal learning journey while helping others
 
 ---
 
 ## 📂 Topics Covered
 
-- **Computer Science Fundamentals**
-  - Data Structures & Algorithms
-  - Database Design & SQL
-  - Networking Basics
-  - Operating Systems
+### 🧠 Computer Science Fundamentals
+- Data Structures & Algorithms (Arrays, Linked Lists, Trees, Graphs, Sorting, Searching, DP)
+- Database Design & SQL (Normalization, Indexing, Joins, Transactions)
+- Operating Systems (Processes, Threads, Memory Management, Deadlocks, File Systems)
+- Computer Networks (OSI, TCP/IP, HTTP/HTTPS, DNS, REST, WebSockets)
 
-- **System Design**
-  - Scalability & Architecture Patterns
-  - Microservices & APIs
-  - Cloud & DevOps Concepts
+### 🏗️ System Design
+- Low-Level Design (OOP, SOLID, Design Patterns)
+- High-Level Design (Scalability, Load Balancing, Caching, Sharding)
+- Microservices & Event-Driven Architecture
+- Cloud & DevOps Basics (AWS, Docker, Kubernetes, CI/CD)
 
-- **Artificial Intelligence & Machine Learning**
-  - ML Algorithms & Models
-  - Deep Learning
-  - Practical AI Applications
+### 🤖 Artificial Intelligence & Machine Learning
+- Machine Learning Algorithms
+- Deep Learning (CNN, RNN, Transformers, GANs)
+- Practical AI Projects
+- MLOps Basics
 
-- **Programming Frameworks**
-  - Frontend: React.js, Tailwind CSS, Bootstrap
-  - Backend: Node.js, Express.js
-  - Other Languages: Java, C, C++
+### 💻 Programming Languages & Frameworks
+- Frontend: React, Next.js, Tailwind CSS
+- Backend: Node.js, Express.js
+- Languages: JavaScript, TypeScript, Python, Java, C/C++, Go
 
 ---
 
-## 🎯 Purpose
+## 🚀 How to Use This Repository
 
-This repository is designed to:
-- Be a **one-stop resource hub** for learners and interview prep.
-- Provide **organized notes, code snippets, and examples**.
-- Encourage **open-source collaboration** and contributions.
+1. Browse folders by topic
+2. Read `.md` files for explanations
+3. Explore code examples
+4. Use GitHub search (Ctrl + K)
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome!  
-If you’d like to add resources, examples, or improvements:
-1. Fork the repo
-2. Create a new branch
-3. Commit your changes
-4. Submit a pull request
+1. Fork the repository
+2. Clone your fork
+3. Create a new branch
+4. Make changes
+5. Commit & push
+6. Open a Pull Request
+
+---
+
+## 🌟 Star This Repository
+
+If you find this helpful, please give it a ⭐  
+https://github.com/awoladhossain/All-learning
 
 ---
 
 ## 📜 License
 
-This project is licensed under the **MIT License** — feel free to use, share, and contribute.
+Licensed under the **MIT License**.
 
 ---
 
-## 🌟 Acknowledgments
+## 👨‍💻 Author
 
-Thanks to the open-source community and countless resources that inspire continuous learning.  
-Together, let’s make interview prep and knowledge sharing easier for everyone!
+**Awolad Hossain**  
+Last Updated: **December 2025**
+
+Happy Learning & Happy Coding! 🚀
