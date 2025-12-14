@@ -40,13 +40,13 @@ Minimal useful tsconfig.json example:
 ```json
 {
   "compilerOptions": {
-    "target": "ES2019",           // output JS version
-    "module": "CommonJS",         // module system
-    "strict": true,               // enable strict checks
-    "esModuleInterop": true,      // interop with CommonJS modules
+    "target": "ES2019", // output JS version
+    "module": "CommonJS", // module system
+    "strict": true, // enable strict checks
+    "esModuleInterop": true, // interop with CommonJS modules
     "skipLibCheck": true,
-    "outDir": "dist",             // compiled files go here
-    "rootDir": "src",             // source files root
+    "outDir": "dist", // compiled files go here
+    "rootDir": "src", // source files root
     "sourceMap": true
   },
   "include": ["src"],
@@ -100,9 +100,12 @@ function greet(name: string): string {
   return `Hello, ${name.toUpperCase()}`;
 }
 
-interface Person { name: string; age?: number; }
+interface Person {
+  name: string;
+  age?: number;
+}
 
-const p: Person = { name: 'Alice' };
+const p: Person = { name: "Alice" };
 console.log(greet(p.name));
 ```
 
@@ -116,9 +119,9 @@ dist/example.js (emitted JS, simplified)
 
 ```js
 function greet(name) {
-    return "Hello, " + name.toUpperCase();
+  return "Hello, " + name.toUpperCase();
 }
-var p = { name: 'Alice' };
+var p = { name: "Alice" };
 console.log(greet(p.name));
 ```
 
@@ -191,13 +194,13 @@ Minimal useful tsconfig.json example:
 ```json
 {
   "compilerOptions": {
-    "target": "ES2019",           // output JS version
-    "module": "CommonJS",         // module system
-    "strict": true,               // enable strict checks
-    "esModuleInterop": true,      // interop with CommonJS modules
+    "target": "ES2019", // output JS version
+    "module": "CommonJS", // module system
+    "strict": true, // enable strict checks
+    "esModuleInterop": true, // interop with CommonJS modules
     "skipLibCheck": true,
-    "outDir": "dist",             // compiled files go here
-    "rootDir": "src",             // source files root
+    "outDir": "dist", // compiled files go here
+    "rootDir": "src", // source files root
     "sourceMap": true
   },
   "include": ["src"],
@@ -251,9 +254,12 @@ function greet(name: string): string {
   return `Hello, ${name.toUpperCase()}`;
 }
 
-interface Person { name: string; age?: number; }
+interface Person {
+  name: string;
+  age?: number;
+}
 
-const p: Person = { name: 'Alice' };
+const p: Person = { name: "Alice" };
 console.log(greet(p.name));
 ```
 
@@ -267,9 +273,9 @@ dist/example.js (emitted JS, simplified)
 
 ```js
 function greet(name) {
-    return "Hello, " + name.toUpperCase();
+  return "Hello, " + name.toUpperCase();
 }
-var p = { name: 'Alice' };
+var p = { name: "Alice" };
 console.log(greet(p.name));
 ```
 
@@ -315,10 +321,10 @@ const undef: undefined = undefined;
 const sym: symbol = Symbol("id");
 const big: bigint = 10n;
 
-console.log(s, n, b);        // hello 42 true
-console.log(nl, undef);      // null undefined
-console.log(typeof sym);     // "symbol"
-console.log(big + 1n);       // 11n
+console.log(s, n, b); // hello 42 true
+console.log(nl, undef); // null undefined
+console.log(typeof sym); // "symbol"
+console.log(big + 1n); // 11n
 ```
 
 Notes:
@@ -338,7 +344,7 @@ const nums: number[] = [1, 2, 3];
 const strs: Array<string> = ["a", "b"];
 
 console.log(nums[0]); // 1
-console.log(strs.map(s => s.toUpperCase())); // ["A","B"]
+console.log(strs.map((s) => s.toUpperCase())); // ["A","B"]
 
 // Tuples (fixed-length, typed positions)
 const pair: [string, number] = ["age", 30];
@@ -413,14 +419,21 @@ Simple, practical notes with examples and expected outputs.
 - Inline annotation for object shapes, use ? for optional, readonly for immutable fields.
 
 ```ts
-const person: { readonly id: number; name: string; age?: number; greet: () => string } = {
+const person: {
+  readonly id: number;
+  name: string;
+  age?: number;
+  greet: () => string;
+} = {
   id: 1,
   name: "Alice",
-  greet() { return `Hi, I'm ${this.name}`; }
+  greet() {
+    return `Hi, I'm ${this.name}`;
+  },
 };
 
-console.log(person.name);        // Alice
-console.log(person.greet());     // Hi, I'm Alice
+console.log(person.name); // Alice
+console.log(person.greet()); // Hi, I'm Alice
 // person.id = 2;                // Error: Cannot assign to 'id' because it is a read-only property
 ```
 
@@ -449,7 +462,7 @@ greet({ name: "Bob", age: 30 }); // Hello Bob (extra age property is okay)
 - Use for unions or complex composition.
 
 ```ts
-type ID = number | string;          // union alias
+type ID = number | string; // union alias
 type User = { name: string; age?: number };
 
 const id1: ID = 42;
@@ -487,8 +500,14 @@ interface Employee extends User {
 }
 
 class Person implements Employee {
-  constructor(public name: string, public company: string, public age?: number) {}
-  greet() { return `Hi ${this.name} from ${this.company}`; }
+  constructor(
+    public name: string,
+    public company: string,
+    public age?: number
+  ) {}
+  greet() {
+    return `Hi ${this.name} from ${this.company}`;
+  }
 }
 
 const p = new Person("Carol", "Acme", 28);
@@ -498,15 +517,21 @@ console.log(p.greet()); // Hi Carol from Acme
 - Index signature in interfaces:
 
 ```ts
-interface StringMap { [key: string]: string; }
+interface StringMap {
+  [key: string]: string;
+}
 const map: StringMap = { a: "1", b: "2" };
 ```
 
 - Declaration merging (interface can be expanded):
 
 ```ts
-interface Window { MY_APP?: string; }
-interface Window { OTHER?: number; }
+interface Window {
+  MY_APP?: string;
+}
+interface Window {
+  OTHER?: number;
+}
 // both MY_APP and OTHER are available on Window
 ```
 
@@ -526,7 +551,9 @@ interface Window { OTHER?: number; }
 Quick example:
 
 ```ts
-type Shape = { kind: "circle"; r: number } | { kind: "rect"; w: number; h: number };
+type Shape =
+  | { kind: "circle"; r: number }
+  | { kind: "rect"; w: number; h: number };
 
 function area(s: Shape) {
   if (s.kind === "circle") return Math.PI * s.r * s.r;
@@ -562,7 +589,7 @@ id = "abc";
 if (typeof id === "string") {
   console.log(id.toUpperCase()); // safe after narrowing
 } else {
-  console.log(id.toFixed(0));    // safe as number
+  console.log(id.toFixed(0)); // safe as number
 }
 ```
 
@@ -593,13 +620,18 @@ console.log(area({ kind: "circle", r: 2 })); // 12.566...
 - Exhaustive checks (helps future-proofing):
 
 ```ts
-function assertNever(x: never): never { throw new Error("Unexpected: " + x); }
+function assertNever(x: never): never {
+  throw new Error("Unexpected: " + x);
+}
 
 function areaSwitch(s: Shape) {
   switch (s.kind) {
-    case "circle": return Math.PI * s.r * s.r;
-    case "rect": return s.w * s.h;
-    default: return assertNever(s); // compile-time error if a case is missing
+    case "circle":
+      return Math.PI * s.r * s.r;
+    case "rect":
+      return s.w * s.h;
+    default:
+      return assertNever(s); // compile-time error if a case is missing
   }
 }
 ```
@@ -649,7 +681,7 @@ function process(u: string | number) {
   if (isString(u)) {
     console.log("string length", u.length); // safe
   } else {
-    console.log("number", u.toFixed(2));     // safe
+    console.log("number", u.toFixed(2)); // safe
   }
 }
 ```
@@ -674,11 +706,16 @@ Short notes with examples, outputs, and quick tips.
 - Numeric enums (default numeric values, reverse mapping exists):
 
 ```ts
-enum Direction { Up, Down, Left, Right }
+enum Direction {
+  Up,
+  Down,
+  Left,
+  Right,
+}
 
-console.log(Direction.Up);    // 0
-console.log(Direction.Down);  // 1
-console.log(Direction[0]);    // "Up"  (reverse mapping)
+console.log(Direction.Up); // 0
+console.log(Direction.Down); // 1
+console.log(Direction[0]); // "Up"  (reverse mapping)
 ```
 
 - String enums (no reverse mapping, safer for logs/serialization):
@@ -690,14 +727,18 @@ enum Status {
   Done = "DONE",
 }
 
-console.log(Status.Active);    // "ACTIVE"
+console.log(Status.Active); // "ACTIVE"
 console.log(Status["ACTIVE"]); // undefined (no reverse mapping)
 ```
 
 - const enums (inlined at compile time — smaller output, no object generated):
 
 ```ts
-const enum Role { Admin, User, Guest }
+const enum Role {
+  Admin,
+  User,
+  Guest,
+}
 const r = Role.User;
 console.log(r); // 1
 ```
@@ -724,8 +765,8 @@ move(Direction.Left); // "move up" not logged
 
 ```ts
 let input: unknown = "hello";
-const s = input as string;       // 'as' keyword
-console.log(s.length);          // 5
+const s = input as string; // 'as' keyword
+console.log(s.length); // 5
 
 // angle-bracket style (not allowed in TSX/JSX)
 const s2 = (<string>input).toUpperCase();
@@ -737,8 +778,8 @@ console.log(s2); // "HELLO"
 - Use 'as' in TSX/React to avoid JSX/angle-bracket conflicts:
 
 ```tsx
-const el = document.getElementById('root') as HTMLDivElement;
-el.style.backgroundColor = 'pink';
+const el = document.getElementById("root") as HTMLDivElement;
+el.style.backgroundColor = "pink";
 ```
 
 ---
@@ -749,14 +790,14 @@ el.style.backgroundColor = 'pink';
 - Syntactic form `value!` — suppresses null/undefined checks for that value.
 
 ```ts
-const app = document.getElementById('app')!; // assertion: not null
+const app = document.getElementById("app")!; // assertion: not null
 app.textContent = "Ready"; // OK for TS, but runtime will throw if null
 ```
 
 - Caution: if the value is actually null at runtime, you'll get a runtime error. Prefer explicit checks:
 
 ```ts
-const maybe = document.getElementById('app');
+const maybe = document.getElementById("app");
 if (maybe) {
   maybe.textContent = "Safe";
 } else {
@@ -792,7 +833,7 @@ function identity<T>(arg: T): T {
   return arg;
 }
 
-console.log(identity(5));            // 5
+console.log(identity(5)); // 5
 console.log(identity<string>("hi")); // "hi"
 
 // multiple generics & tuple swap
@@ -806,8 +847,8 @@ function logLength<T extends { length: number }>(x: T): T {
   console.log(x.length);
   return x;
 }
-logLength("hello");       // 5
-logLength([1, 2, 3]);     // 3
+logLength("hello"); // 5
+logLength([1, 2, 3]); // 3
 // logLength(123);        // Error: number doesn't have length
 
 // keyof + property access
@@ -825,9 +866,15 @@ console.log(pluck(person, "name")); // "Alice"
 ```ts
 class Stack<T> {
   private items: T[] = [];
-  push(v: T) { this.items.push(v); }
-  pop(): T | undefined { return this.items.pop(); }
-  size(): number { return this.items.length; }
+  push(v: T) {
+    this.items.push(v);
+  }
+  pop(): T | undefined {
+    return this.items.pop();
+  }
+  size(): number {
+    return this.items.length;
+  }
 }
 
 const s = new Stack<number>();
@@ -840,8 +887,12 @@ console.log(s.size()); // 1
 type WithId = { id: string };
 class Repo<T extends WithId> {
   private store = new Map<string, T>();
-  save(item: T) { this.store.set(item.id, item); }
-  get(id: string): T | undefined { return this.store.get(id); }
+  save(item: T) {
+    this.store.set(item.id, item);
+  }
+  get(id: string): T | undefined {
+    return this.store.get(id);
+  }
 }
 const repo = new Repo<{ id: string; name: string }>();
 repo.save({ id: "1", name: "X" });
@@ -863,7 +914,7 @@ console.log(merge({ a: 1 }, { b: 2 })); // { a:1, b:2 }
 function createArray<T = number>(len: number, v: T): T[] {
   return Array.from({ length: len }, () => v);
 }
-console.log(createArray(3, 0));   // [0,0,0]  (T inferred as number)
+console.log(createArray(3, 0)); // [0,0,0]  (T inferred as number)
 console.log(createArray<string>(2, "x")); // ["x","x"]
 ```
 
@@ -884,24 +935,31 @@ console.log(createArray<string>(2, "x")); // ["x","x"]
 
 ```ts
 // src/user.ts
-export interface User { id: string; name: string; }
-export function greet(u: User) { return `Hi ${u.name}`; }
+export interface User {
+  id: string;
+  name: string;
+}
+export function greet(u: User) {
+  return `Hi ${u.name}`;
+}
 ```
 
 - Default export:
 
 ```ts
 // src/logger.ts
-export default function log(msg: string) { console.log('[LOG]', msg); }
+export default function log(msg: string) {
+  console.log("[LOG]", msg);
+}
 ```
 
 - Importing:
 
 ```ts
-import log from './logger';
-import { greet, type User } from './user'; // "type" import is erased at runtime
+import log from "./logger";
+import { greet, type User } from "./user"; // "type" import is erased at runtime
 
-const u: User = { id: '1', name: 'Alice' };
+const u: User = { id: "1", name: "Alice" };
 log(greet(u)); // [LOG] Hi Alice
 ```
 
@@ -909,15 +967,15 @@ log(greet(u)); // [LOG] Hi Alice
 
 ```ts
 // src/index.ts
-export * from './user';
-export { default as log } from './logger';
+export * from "./user";
+export { default as log } from "./logger";
 ```
 
 - Dynamic import (runtime, Promise-based):
 
 ```ts
 async function loadAndRun() {
-  const mod = await import('./heavy'); // code-splitting / lazy-load
+  const mod = await import("./heavy"); // code-splitting / lazy-load
   mod.heavyTask();
 }
 ```
@@ -935,19 +993,23 @@ Notes:
 
 ```ts
 function format(x: string | number) {
-  if (typeof x === 'string') return x.toUpperCase(); // narrowed to string
-  return x.toFixed(2);                               // narrowed to number
+  if (typeof x === "string") return x.toUpperCase(); // narrowed to string
+  return x.toFixed(2); // narrowed to number
 }
 ```
 
 - instanceof (classes)
 
 ```ts
-class A { a = 1; }
-class B { b = 2; }
+class A {
+  a = 1;
+}
+class B {
+  b = 2;
+}
 function check(x: A | B) {
   if (x instanceof A) return x.a; // safe: A
-  return x.b;                     // safe: B
+  return x.b; // safe: B
 }
 ```
 
@@ -958,8 +1020,8 @@ type Fish = { swim: () => void };
 type Bird = { fly: () => void };
 
 function move(a: Fish | Bird) {
-  if ('swim' in a) a.swim(); // narrowed to Fish
-  else a.fly();              // narrowed to Bird
+  if ("swim" in a) a.swim(); // narrowed to Fish
+  else a.fly(); // narrowed to Bird
 }
 ```
 
@@ -969,14 +1031,14 @@ function move(a: Fish | Bird) {
 type Person = { name: string; age?: number };
 
 function isPerson(x: any): x is Person {
-  return typeof x === 'object' && x !== null && 'name' in x;
+  return typeof x === "object" && x !== null && "name" in x;
 }
 
 function welcome(x: unknown) {
   if (isPerson(x)) {
-    console.log('Hello', x.name); // x typed as Person here
+    console.log("Hello", x.name); // x typed as Person here
   } else {
-    console.log('Not a person');
+    console.log("Not a person");
   }
 }
 ```
@@ -985,11 +1047,11 @@ function welcome(x: unknown) {
 
 ```ts
 type Shape =
-  | { kind: 'circle'; r: number }
-  | { kind: 'rect'; w: number; h: number };
+  | { kind: "circle"; r: number }
+  | { kind: "rect"; w: number; h: number };
 
 function area(s: Shape) {
-  if (s.kind === 'circle') return Math.PI * s.r * s.r; // narrowed
+  if (s.kind === "circle") return Math.PI * s.r * s.r; // narrowed
   return s.w * s.h;
 }
 ```
@@ -1001,39 +1063,43 @@ function area(s: Shape) {
 - Partial<T> — all properties optional:
 
 ```ts
-interface User { id: string; name: string; age?: number }
+interface User {
+  id: string;
+  name: string;
+  age?: number;
+}
 function updateUser(u: User, patch: Partial<User>) {
   return { ...u, ...patch };
 }
-const u1 = updateUser({ id: '1', name: 'A' }, { name: 'B' });
+const u1 = updateUser({ id: "1", name: "A" }, { name: "B" });
 // u1: { id: '1', name: 'B' }
 ```
 
 - Pick<T, K> — subset of properties:
 
 ```ts
-type NameOnly = Pick<User, 'name'>;
-const n: NameOnly = { name: 'Alice' };
+type NameOnly = Pick<User, "name">;
+const n: NameOnly = { name: "Alice" };
 ```
 
 - Omit<T, K> — remove keys:
 
 ```ts
-type WithoutAge = Omit<User, 'age'>;
-const u2: WithoutAge = { id: '2', name: 'Bob' };
+type WithoutAge = Omit<User, "age">;
+const u2: WithoutAge = { id: "2", name: "Bob" };
 ```
 
 - Readonly<T> — all fields readonly:
 
 ```ts
-const readonlyUser: Readonly<User> = { id: '1', name: 'X' };
+const readonlyUser: Readonly<User> = { id: "1", name: "X" };
 // readonlyUser.name = 'Y'; // Error: cannot assign to readonly property
 ```
 
 - Record<K extends keyof any, T> — map keys to a type:
 
 ```ts
-type Scores = Record<'alice' | 'bob', number>;
+type Scores = Record<"alice" | "bob", number>;
 const scores: Scores = { alice: 10, bob: 8 };
 ```
 
@@ -1059,13 +1125,13 @@ function createArray<T = number>(len: number, v: T): T[] {
   return Array.from({ length: len }, () => v);
 }
 
-console.log(createArray(3, 0));         // [0,0,0]  (T inferred as number)
+console.log(createArray(3, 0)); // [0,0,0]  (T inferred as number)
 console.log(createArray<string>(2, "x")); // ["x","x"]
 
 class Box<T = unknown> {
   constructor(public value: T) {}
 }
-const b1 = new Box(5);        // Box<number> inferred
+const b1 = new Box(5); // Box<number> inferred
 const b2 = new Box<string>("hi"); // Box<string>
 ```
 
@@ -1081,12 +1147,12 @@ Tip: defaults keep generics ergonomic when a typical type is common.
 // simple check
 type IsString<T> = T extends string ? true : false;
 type A = IsString<"a">; // true
-type B = IsString<42>;  // false
+type B = IsString<42>; // false
 
 // infer element type from arrays or pass-through
 type ElementType<T> = T extends (infer U)[] ? U : T;
 type E1 = ElementType<number[]>; // number
-type E2 = ElementType<string>;   // string
+type E2 = ElementType<string>; // string
 
 // distributive behavior: applied to unions
 type Wrapped<T> = T extends any ? T[] : never;
@@ -1117,12 +1183,16 @@ type MyReadonly<T> = { readonly [K in keyof T]: T[K] };
 type ReadonlyUser = MyReadonly<User>;
 
 // add getter methods (key remapping with `as` and string manipulation)
-type Getters<T> = { [K in keyof T as `get${Capitalize<string & K>}`]: () => T[K] };
+type Getters<T> = {
+  [K in keyof T as `get${Capitalize<string & K>}`]: () => T[K];
+};
 type UserGetters = Getters<User>;
 // UserGetters -> { getId: () => string; getName: () => string; getAge?: () => number }
 
 // conditional in mapped types: apply rule only to string props
-type NullableStrings<T> = { [K in keyof T]: T[K] extends string ? T[K] | null : T[K] };
+type NullableStrings<T> = {
+  [K in keyof T]: T[K] extends string ? T[K] | null : T[K];
+};
 type NullableName = NullableStrings<User>; // name: string | null; id: string; age?: number
 
 // recursive mapped type (DeepPartial)
@@ -1171,13 +1241,17 @@ interface Dog extends Animal {
 
 class MyDog implements Dog {
   constructor(public name: string, public breed: string) {}
-  speak() { return `${this.name} makes a sound`; }
-  bark() { return `${this.name} barks: Woof!`; }
+  speak() {
+    return `${this.name} makes a sound`;
+  }
+  bark() {
+    return `${this.name} barks: Woof!`;
+  }
 }
 
 const d: Dog = new MyDog("Rex", "Beagle");
 console.log(d.speak()); // Rex makes a sound
-console.log(d.bark());  // Rex barks: Woof!
+console.log(d.bark()); // Rex barks: Woof!
 ```
 
 Cheat: "extends" merges assumptions so Dog includes Animal fields.
@@ -1190,15 +1264,17 @@ Cheat: "extends" merges assumptions so Dog includes Animal fields.
 
 ```ts
 interface Counter {
-  (start: number): string;   // callable signature
-  count: number;             // property
-  reset(): void;             // method
+  (start: number): string; // callable signature
+  count: number; // property
+  reset(): void; // method
 }
 
 function createCounter(): Counter {
   const f = ((start: number) => `started at ${start}`) as Counter;
   f.count = 0;
-  f.reset = () => { f.count = 0; };
+  f.reset = () => {
+    f.count = 0;
+  };
   return f;
 }
 
@@ -1232,7 +1308,7 @@ Cheat: cast function to Counter and attach properties to it.
 #### Class decorator (add or change constructor behavior)
 
 ```ts
-function addTimestamp<T extends { new(...args: any[]): {} }>(ctor: T) {
+function addTimestamp<T extends { new (...args: any[]): {} }>(ctor: T) {
   return class extends ctor {
     createdAt = new Date();
   };
@@ -1252,11 +1328,7 @@ Cheat: class decorator can return a new constructor to extend behavior.
 #### Method decorator (wrap method to log arguments/results)
 
 ```ts
-function logMethod(
-  target: any,
-  key: string,
-  descriptor: PropertyDescriptor
-) {
+function logMethod(target: any, key: string, descriptor: PropertyDescriptor) {
   const original = descriptor.value;
   descriptor.value = function (...args: any[]) {
     console.log(`Calling ${key} with`, args);
@@ -1292,7 +1364,7 @@ function nonEnumerable(target: any, prop: string) {
   Object.defineProperty(target, prop, {
     enumerable: false,
     configurable: true,
-    writable: true
+    writable: true,
   });
 }
 
@@ -1301,12 +1373,14 @@ class Product {
   secret = "hidden";
 
   public name: string;
-  constructor(name: string) { this.name = name; }
+  constructor(name: string) {
+    this.name = name;
+  }
 }
 
 const p = new Product("Widget") as any;
-console.log(p.secret);             // hidden
-console.log(Object.keys(p));       // ["name"] -> secret not shown (non-enumerable)
+console.log(p.secret); // hidden
+console.log(Object.keys(p)); // ["name"] -> secret not shown (non-enumerable)
 ```
 
 Notes:
@@ -1342,8 +1416,13 @@ Cheat summary:
 
 ```ts
 namespace Utils {
-  export function log(msg: string) { console.log(msg); }
-  export interface Person { name: string; age?: number; }
+  export function log(msg: string) {
+    console.log(msg);
+  }
+  export interface Person {
+    name: string;
+    age?: number;
+  }
 }
 
 const p: Utils.Person = { name: "Alice" };
@@ -1374,7 +1453,9 @@ declare module "legacy-lib" {
 ```ts
 // global.d.ts
 declare global {
-  interface Window { MY_APP?: string; }
+  interface Window {
+    MY_APP?: string;
+  }
 }
 export {};
 ```
@@ -1391,17 +1472,19 @@ Notes:
 - TypeScript infers types so you often don’t need explicit annotations; contextual typing narrows types using expected type information.
 
 ```ts
-let n = 10;        // inferred as number
-const s = "hi";    // inferred as "hi" (literal) with const
+let n = 10; // inferred as number
+const s = "hi"; // inferred as "hi" (literal) with const
 
-function add(a: number, b: number) { return a + b; } // return inferred number
+function add(a: number, b: number) {
+  return a + b;
+} // return inferred number
 
 // contextual typing: map callback gets inferred element type
 const nums = [1, 2, 3];
-const strs = nums.map(n => n.toString()); // n inferred as number
+const strs = nums.map((n) => n.toString()); // n inferred as number
 
 type Handler = (e: { value: number }) => void;
-const h: Handler = e => console.log(e.value); // e is typed from Handler (contextual)
+const h: Handler = (e) => console.log(e.value); // e is typed from Handler (contextual)
 ```
 
 Tips:
@@ -1416,7 +1499,9 @@ Tips:
 
 ```ts
 // inferred return type: { ok: boolean }
-function check(n: number) { return { ok: n > 0 }; }
+function check(n: number) {
+  return { ok: n > 0 };
+}
 
 // explicit annotation recommended in public API
 export function parseAndDouble(s: string): number {
@@ -1460,7 +1545,9 @@ type NotNull = NonNullable<Maybe>; // string
 - Gets the return type of a function type.
 
 ```ts
-function mk(n: number) { return { id: `${n}`, value: n * 2 }; }
+function mk(n: number) {
+  return { id: `${n}`, value: n * 2 };
+}
 type R = ReturnType<typeof mk>; // { id: string; value: number }
 ```
 
@@ -1469,7 +1556,9 @@ type R = ReturnType<typeof mk>; // { id: string; value: number }
 - Gets the instance type from a constructor type.
 
 ```ts
-class User { constructor(public name: string) {} }
+class User {
+  constructor(public name: string) {}
+}
 type UserInstance = InstanceType<typeof User>; // User
 const u: UserInstance = new User("Alice");
 console.log(u.name); // "Alice"
@@ -1490,7 +1579,7 @@ console.log(u.name); // "Alice"
 
 ```ts
 type ReqUser = { id: string; name: string; age?: number };
-type PublicUser = Omit<ReqUser, 'age'>; // remove private field
+type PublicUser = Omit<ReqUser, "age">; // remove private field
 type NullableUser = ReqUser | null;
 
 type NonNullUser = NonNullable<NullableUser>; // ReqUser
@@ -1536,16 +1625,16 @@ type NotDistributed = NoDist<number | string>; // { value: number | string }
 - Compose string-like types at compile-time.
 
 ```ts
-type Role = 'user' | 'admin';
+type Role = "user" | "admin";
 type Event = `${Role}:created` | `${Role}:deleted`; // 'user:created' | 'admin:created' | 'user:deleted' | 'admin:deleted'
 
 type HandlerName<T extends string> = `on${Capitalize<T>}`;
 type Handlers = {
-  [K in HandlerName<'click' | 'input'>]?: () => void;
+  [K in HandlerName<"click" | "input">]?: () => void;
 };
 // Equivalent keys: onClick, onInput
 
-const h: Handlers = { onClick: () => console.log('click') };
+const h: Handlers = { onClick: () => console.log("click") };
 h.onClick?.(); // prints "click"
 ```
 
@@ -1556,11 +1645,13 @@ h.onClick?.(); // prints "click"
 - Create deep transforms for nested objects / arrays.
 
 ```ts
-type DeepReadonly<T> =
-  T extends Function ? T :
-  T extends Array<infer U> ? ReadonlyArray<DeepReadonly<U>> :
-  T extends object ? { readonly [K in keyof T]: DeepReadonly<T[K]> } :
-  T;
+type DeepReadonly<T> = T extends Function
+  ? T
+  : T extends Array<infer U>
+  ? ReadonlyArray<DeepReadonly<U>>
+  : T extends object
+  ? { readonly [K in keyof T]: DeepReadonly<T[K]> }
+  : T;
 
 // Example
 type Nested = { a: { b: number[] } };
@@ -1582,13 +1673,15 @@ Cheat: Recursive mapped & conditional types let you express deep, structural con
 ```ts
 type Brand<K, T> = K & { readonly __brand: T };
 
-type UserId = Brand<string, 'UserId'>;
+type UserId = Brand<string, "UserId">;
 const mkUserId = (s: string) => s as UserId;
 
-function getUser(id: UserId) { /* ... */ }
+function getUser(id: UserId) {
+  /* ... */
+}
 
-const uid = mkUserId('user-1');
-getUser(uid);           // ok
+const uid = mkUserId("user-1");
+getUser(uid); // ok
 // getUser('user-1');   // Error: string is not assignable to UserId
 ```
 
@@ -1621,7 +1714,7 @@ class UserBuilder<T extends Partial<User> = {}> {
 }
 
 // Usage:
-const ok = new UserBuilder().setName('Alice').setAge(30).build(); // type is User
+const ok = new UserBuilder().setName("Alice").setAge(30).build(); // type is User
 // const bad = new UserBuilder().setName('Alice').build(); // build() returns never -> compile-time error if you assign to User
 ```
 
@@ -1640,13 +1733,15 @@ class ConfigBuilder<T extends Record<string, any> = {}> {
     (this.cfg as any)[key] = value;
     return this as any;
   }
-  build(): T { return this.cfg; }
+  build(): T {
+    return this.cfg;
+  }
 }
 
 // Usage:
 const c = new ConfigBuilder()
-  .set('host', 'localhost')
-  .set('port', 8080)
+  .set("host", "localhost")
+  .set("port", 8080)
   .build();
 // 'c' inferred as { host: string; port: number }
 ```
@@ -1662,3 +1757,69 @@ Cheat summary:
 - Recursive types model deep transforms (readonly, partial) across nested objects/arrays.
 - Branding emulates nominal types; generic builders & fluent APIs enforce correctness using type-state generics.
 
+# Advanced TypeScript Integration & Performance Guide
+
+> A comprehensive guide to integrating TypeScript with modern stacks, ensuring type safety across boundaries, and optimizing for scale.
+
+## 📋 Table of Contents
+
+- [Integration](#-integration)
+  - [React with TypeScript](#react-with-typescript)
+  - [Node.js & Express](#nodejs--express)
+- [Type-Safe APIs](#-type-safe-apis)
+  - [REST (Zod / OpenAPI)](#rest-apis)
+  - [GraphQL (Codegen)](#graphql-apis)
+- [Performance & Scalability](#-performance--scalability)
+  - [Large-scale tsconfig Optimization](#large-scale-tsconfig-optimization)
+  - [Incremental Builds](#incremental-builds)
+  - [Project References](#project-references)
+- [Testing with TypeScript](#-testing-with-typescript)
+  - [Type-safe Unit Tests (Jest + TS)](#type-safe-unit-tests)
+  - [Mocking with Types](#mocking-with-types)
+
+---
+
+## 🔌 Integration
+
+### React with TypeScript
+
+Best practices for typing components, hooks, and contexts.
+
+```tsx
+// Example: Strongly typed functional component with Props
+import React, { ReactNode } from "react";
+
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: "primary" | "secondary";
+  children: ReactNode;
+}
+
+export const Button = ({
+  variant = "primary",
+  children,
+  ...props
+}: ButtonProps) => {
+  return (
+    <button className={`btn-${variant}`} {...props}>
+      {children}
+    </button>
+  );
+};
+```
+
+### Node.js & Express
+
+Best practices for typing server-side code with Express.
+
+```ts
+// Example: Typed Express router
+import { Router, Request, Response } from "express";
+
+const router = Router();
+
+router.get("/users", (req: Request, res: Response) => {
+  res.json({ users: [] });
+});
+
+export default router;
+```
