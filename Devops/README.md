@@ -90,6 +90,8 @@ Git tracks changes and enables collaboration.
    - Removes the last commit but keeps changes unstaged (ready to recommit).
    - Use: `git reset HEAD~1`
 
+---
+
 **File Delete but wants to restore Case:**
 
 1. **Case 1: File was committed before deletion**
