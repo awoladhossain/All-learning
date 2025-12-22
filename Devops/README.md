@@ -74,6 +74,61 @@ Git tracks changes and enables collaboration.
     - A snapshot of the code is saved in the local repo with a commit ID/hash.
     - Commit with: `git commit -m "message"`
 
+**The 3 Types of Git Reset (Undo Last Commit):**
+
+1. **Soft Reset**:
+
+   - Removes the last commit but keeps changes staged (ready to recommit).
+   - Use: `git reset --soft HEAD~1`
+
+2. **Hard Reset**:
+
+   - Removes the last commit and discards changes.
+   - Use: `git reset --hard HEAD~1`
+
+3. **Mixed Reset** (Default):
+   - Removes the last commit but keeps changes unstaged (ready to recommit).
+   - Use: `git reset HEAD~1`
+
+# 🔄 Git File Delete & Restore Scenarios
+
+This guide explains how to restore files in Git depending on how they were deleted.
+
+---
+
+## 📂 Case 1: File was committed before deletion (deletion not committed yet)
+
+- **Situation:** The file existed in a previous commit, you deleted it locally but haven’t committed the deletion.
+- **Steps:**
+  `git status`
+  `git restore <filename>`
+- ✅ Restores the file exactly as it was in the last commit.
+
+2. **Case 2: File was deleted but not committed yet**
+
+   - Situation: You created the file, never staged (git add) or committed it, then deleted it.
+   - Git cannot restore this file because it was never tracked.
+   - Recover it from your editor’s backup, recycle bin/trash, or external backup.
+   - ⚠️ Git only restores files that were committed at least once.
+
+3. **Case 3: File was deleted and already committed**
+
+   - If you committed the deletion but want the file back:
+   - Find the commit hash where the file still existed: Use: `git log -- <filename>`
+   - Restore it from that commit: Use: `git checkout <commit_hash> -- <filename>`
+   - Eaxmple:`git checkout abc123 -- index.html`
+   - ✅ Brings the file back from history.
+
+4. **Case 4:File was committed, then deleted, and pushed to remote**
+
+- Situation: The deletion commit has already been pushed.
+- Safe way (recommended): Restore the file from its old commit and commit it again:
+- `git checkout <commit_hash> -- <filename>`
+- `git add <filename>`
+- `git commit -m "Restore deleted file"`
+- `git push`
+  **Dangerous way (avoid unless necessary): Rewrite history with `git reset` or `git revert`**
+- ⚠️ This can cause conflicts if others have pulled the branch.
 
 **Configuration:**
 
