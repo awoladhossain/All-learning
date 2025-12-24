@@ -211,3 +211,79 @@ SELECT AVG(total_price) AS average_total_price
 FROM Sales
 ```
 
+21. Retrieve the sale_id and sale_date from the Sales table, formatting the sale_date as 'YYYY-MM-DD'.
+
+```sql
+SELECT sale_id, DATE_FORMAT(sale_date, '%Y-%m-%d') AS formatted_date
+FROM Sales;
+```
+
+22. Calculate the total revenue generated from sales of products in the 'Electronics' category.
+```sql
+SELECT SUM(Sales.total_price) AS total_revenue
+FROM Sales
+JOIN Products ON Sales.product_id = Products.product_id
+WHERE Products.category = 'Electronics';
+```
+
+23. Retrieve the product_name and unit_price from the Products table, filtering the unit_price to show only values between $20 and $600.
+
+```sql
+SELECT product_name, unit_price
+FROM Products
+WHERE unit_price BETWEEN 20 AND 600;
+```
+24. Retrieve the product_name and category from the Products table, ordering the results by category in ascending order.
+```sql
+SELECT product_name, category
+FROM Products
+ORDER BY category ASC;
+```
+
+25. Calculate the total quantity_sold of products in the 'Electronics' category.
+```sql
+SELECT SUM(quantity_sold) AS total_quantity_sold
+FROM Sales
+JOIN Products ON Sales.product_id = Products.product_id
+WHERE Products.category = 'Electronics';
+```
+
+26.  Retrieve the product_name and total_price from the Sales table, calculating the total_price as quantity_sold multiplied by unit_price.
+```sql
+SELECT product_name, quantity_sold * unit_price AS total_price
+FROM Sales
+JOIN Products ON Sales.product_id = Products.product_id;
+```
+
+27. Identify the Most Frequently Sold Product from Sales table
+```sql
+SELECT product_id, COUNT(*) AS sales_count
+FROM Sales
+GROUP BY product_id
+ORDER BY sales_count DESC
+LIMIT 1;
+```
+
+28. Find the Products Not Sold from Products table
+```sql
+SELECT product_id, product_name
+FROM Products
+WHERE product_id NOT IN (SELECT DISTINCT product_id FROM Sales);
+```
+
+29. Calculate the total revenue generated from sales for each product category.
+```sql
+SELECT p.category, SUM(s.total_price) AS total_revenue
+FROM Sales s
+JOIN Products p ON s.product_id = p.product_id
+GROUP BY p.category;
+```
+
+30. Find the product category with the highest average unit price.
+```sql
+SELECT category
+FROM Products
+GROUP BY category
+ORDER BY AVG(unit_price) DESC
+LIMIT 1;
+```
