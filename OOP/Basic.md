@@ -88,6 +88,13 @@ class Car extends Vehicle {
 }
 ```
 
+### Various types of inheritance are listed below:
+1. `Single Inheritance`: The single child class inherits characteristics of the single-parent class.
+2. `Multiple Inheritance`: One class inherits features of more than one base class and is not supported in Java, but the class can implement more than one interface.
+3. `Multilevel Inheritance`: A class can inherit from a derived class making it a base class for a new class, for example, a Child inherits behavior from his father, and the father has inherited characteristics from his father.
+4. `Hierarchical Inheritance`: Multiple subclasses inherit one class.
+5. `Hybrid Inheritance`: This is a combination of single and multiple inheritance.
+
 ### 5. Polymorphism
 
 - Ability of an object to take many forms.
@@ -138,6 +145,7 @@ class Car {
 
 ### 8. Interfaces
 
+- An interface in object-oriented programming (OOP) is a contract that defines a set of methods a class must implement, without specifying how these methods should be executed.
 - Defines a contract that classes must follow.
 - Supports multiple inheritance in Java.
 
@@ -460,6 +468,8 @@ Memorize:
 - Anonymous -> single-use inline class.
 
 ### 16. Generics with OOP
+
+- Generics in object-oriented programming (OOP) allow developers to create classes, interfaces, and methods that can operate on different data types while providing type safety at compile time. This enhances code reusability and flexibility, enabling the same code to work with various types without the need for casting or duplication.
 
 - Purpose: Enable classes and methods to operate on typed objects while providing compile-time type safety and avoiding casts.
 - Use when a class or method should work with many types (collections, wrappers, utilities).
@@ -825,7 +835,7 @@ public class Calculator {
     public int add(int a, int b) {
         return a + b;
     }
-} 
+}
 ```
 - এখানে int type নিশ্চিত করে যে শুধু integer numbers-ই add হবে।
 
@@ -868,9 +878,42 @@ Dynamic Typing (Python, Ruby, JavaScript): Runtime-এ type check হয়। �
 ```java
 class Person {
     constructor(public name: string, public age: number) {}
-    
+
     greet(): string {
         return `আমার নাম ${this.name}, আমার বয়স ${this.age}`;
     }
 }
 ```
+
+### difference between extends and implements?
+
+1. `Extends`: A class can extend another class (child extending parent by inheriting his characteristics). Interface as well inherit (using keyword extends) another interface.
+ `Implements`: A class can implement an interface
+
+2. `Extends`:Sub class extending super class may not override all of the super class methods
+    `Implements`:Class implementing interface has to implement all the methods of the interface.
+
+3. `Extends`:Class can only extend a single super class.
+    `Implements`: Class can implement any number of interfaces.
+
+### different access modifiers:
+1. `Default access modifier` is without any access specifier data members, class and methods, and are accessible within the same package.
+2. `Private access modifiers` are marked with the keyword private, and are accessible only within class, and not even accessible by class from the same package.
+3. `Protected access modifiers` can be accessible within the same package or subclasses from different packages.
+4. `Public access modifiers` are accessible from everywhere.
+
+
+### constructor
+
+- A Constructor is a method without a return type and has the same name as the class name. When we create an object, a default constructor allocates memory for the object during the compilation of Java code. Constructors are used to initialize objects and set initial values for object attributes.
+
+### difference between Runtime and compile-time polymorphism
+
+1. `Compile Time Polymorphism:` Call is resolved by a compiler in compile-time polymorphism.
+ `Runtime Polymorphism:` Call is not resolved by the compiler in runtime polymorphism.
+
+2. `Compile Time Polymorphism:`It is also known as static binding and method overloading.
+ `Runtime Polymorphism:` It is also known as dynamic, late, and method overriding.
+
+3. `Compile Time Polymorphism:` Same name methods with different parameters or methods with the same signature and different return types are compile-time polymorphism.
+ `Runtime Polymorphism:` Same name method with the same parameters or signature associated in different classes are called method overriding.
